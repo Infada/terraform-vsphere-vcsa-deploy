@@ -14,19 +14,18 @@ This Terraform module creates and deploys a vCenter Server Appliance on an ESXi 
 ```hcl
 locals {
   # Deployment Details
-  infra_deploy   = yamldecode(file("${path.module}/deploy_vcenter_on_vcenter.yaml"))
+  infra_deploy   = yamldecode(file("${path.module}/deploy_vcsa_on_esxi.yaml"))
   deploy_vcenter = local.infra_deploy.deploy_vcenter
 }
 
 module "deploy_vcenter" {
-  source                = "kalenarndt/vcsa-deploy/vsphere"
+  source                = "infada/vcsa-deploy/vsphere"
+  version		= "1.0.7"
   for_each              = local.deploy_vcenter
   deploy_type           = each.value.deploy_type
-  vc_datacenter         = each.value.vc_datacenter
-  vc_username           = each.value.vc_username
-  vc_hostname           = each.value.vc_hostname
-  vc_password           = each.value.vc_password
-  vc_cluster            = each.value.vc_cluster
+  esxi_hostname         = each.value.esxi_hostname
+  esxi_username         = each.value.esxi_username
+  esxi_password         = each.value.esxi_password
   vcsa_network          = each.value.vcsa_network
   vcsa_datastore        = each.value.vcsa_datastore
   disk_mode             = each.value.disk_mode
@@ -47,6 +46,7 @@ module "deploy_vcenter" {
   vcenter_ceip_status   = each.value.vcenter_ceip_status
   binaries_path         = each.value.binaries_path
 }
+
 ```
 Ensure that you modify the deploy_vcsa_on_vcenter.yaml or deploy_vcsa_on_esxi.yaml file to match the details of your environment.  These files are located under the examples folders.
 
