@@ -129,7 +129,6 @@ No modules.
 | Name | Type |
 |------|------|
 | [local_file.vcsa_template_to_json](https://registry.terraform.io/providers/hashicorp/local/latest/docs/resources/file) | resource |
-| [null_resource.vcsa_linux_deploy](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
 | [null_resource.vcsa_windows_deploy](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
 
 ## Inputs
