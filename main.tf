@@ -35,13 +35,6 @@ resource "local_file" "vcsa_template_to_json" {
   content  = local.vcsa_template
 }
 
-resource "null_resource" "vcsa_linux_deploy" {
-  count = var.windows == false ? 1 : 0
-  provisioner "local-exec" {
-    command = "${local.binaries_path}/vcsa-cli-installer/lin64/vcsa-deploy install --accept-eula --acknowledge-ceip --no-ssl-certificate-verification ${local.binaries_path}/vcsa-${var.deploy_type}.json"
-  }
-}
-
 resource "null_resource" "vcsa_windows_deploy" {
   count = var.windows == true ? 1 : 0
   provisioner "local-exec" {
