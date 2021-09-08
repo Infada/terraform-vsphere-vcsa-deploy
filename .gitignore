@@ -35,3 +35,4 @@ terraform.rc
 .gitkeep
 
 .DS_Store
+examples/deploy-vcsa-on-esxi-map/deploy_vcsa_on_esxi.yaml
