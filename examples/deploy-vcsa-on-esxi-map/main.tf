@@ -6,7 +6,7 @@ locals {
 
 module "deploy_vcenter" {
   source                = "infada/vcsa-deploy/vsphere"
-  version		= "1.0.7"
+  version		= "1.0.8"
   for_each              = local.deploy_vcenter
   deploy_type           = each.value.deploy_type
   esxi_hostname         = each.value.esxi_hostname
