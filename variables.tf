@@ -126,7 +126,7 @@ variable "vcenter_root_password" {
 
 variable "vcenter_ntp_server" {
   description = "vCenter server NTP server"
-  default     = "pool.ntp.org"
+  default     = "ntp.time.nl"
   type        = string
 }
 
@@ -150,7 +150,7 @@ variable "vcenter_sso_domain" {
 
 variable "vcenter_ceip_status" {
   description = "vCenter server CEIP status"
-  default     = false
+  default     = true
   type        = bool
 }
 
@@ -162,7 +162,7 @@ variable "vcenter_fqdn" {
 variable "windows" {
   description = "Toggle for executing the windows binary for deploying the vcsa"
   type        = bool
-  default     = false
+  default     = true
 }
 
 variable "binaries_path" {

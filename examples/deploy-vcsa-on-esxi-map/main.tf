@@ -5,7 +5,7 @@ locals {
 }
 
 module "deploy_vcenter" {
-  source                = "kalenarndt/vcsa-deploy/vsphere"
+  source                = "infada/vcsa-deploy/vsphere"
   for_each              = local.deploy_vcenter
   deploy_type           = each.value.deploy_type
   esxi_hostname         = each.value.esxi_hostname
