@@ -159,6 +159,12 @@ variable "vcenter_fqdn" {
   type        = string
 }
 
+variable "windows" {
+  description = "Toggle for executing the windows binary for deploying the vcsa"
+  type        = bool
+  default     = true
+}
+
 variable "binaries_path" {
   description = "Path for the vCenter server deployment binaries"
   type        = string
