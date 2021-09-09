@@ -25,12 +25,14 @@ variable "esxi_password" {
   description = "Password for the account on the target host"
   type        = string
   default     = ""
+  sensitive   = "true"
 }
 
 variable "vc_password" {
   description = "Password for the account on the target vCenter that will be used to deploy the appliance"
   type        = string
   default     = ""
+  sensitive   = "true"
 }
 
 variable "vc_datacenter" {
@@ -99,7 +101,6 @@ variable "ip_family" {
 }
 
 variable "network_mode" {
-  default     = "static"
   description = "Static or DHCP configuration for the network mode"
   type        = string
 }
@@ -122,11 +123,11 @@ variable "vcenter_dns" {
 variable "vcenter_root_password" {
   description = "vCenter server root password"
   type        = string
+  sensitive   = "true"
 }
 
 variable "vcenter_ntp_server" {
   description = "vCenter server NTP server"
-  default     = "ntp.time.nl"
   type        = string
 }
 
@@ -138,19 +139,17 @@ variable "vcenter_ssh_enabled" {
 
 variable "vcenter_sso_password" {
   description = "vCenter server SSO password"
-  default     = "VMware123!"
   type        = string
+  sensitive   = "true"
 }
 
 variable "vcenter_sso_domain" {
   description = "vCenter server SSO domain"
-  default     = "vsphere.local"
   type        = string
 }
 
 variable "vcenter_ceip_status" {
   description = "vCenter server CEIP status"
-  default     = true
   type        = bool
 }
 
@@ -162,7 +161,6 @@ variable "vcenter_fqdn" {
 variable "windows" {
   description = "Toggle for executing the windows binary for deploying the vcsa"
   type        = bool
-  default     = true
 }
 
 variable "binaries_path" {

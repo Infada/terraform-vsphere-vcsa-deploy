@@ -1,6 +1,6 @@
 locals {
   binaries_path = var.binaries_path
-  vcsa_template = templatefile("${path.module}/vcsa-${var.deploy_type}.json.tmpl", {
+  vcsa_template = templatefile("${path.module}/Template/vcsa-${var.deploy_type}.json.tmpl", {
     esxi_hostname         = var.esxi_hostname
     vc_hostname           = var.vc_hostname
     esxi_username         = var.esxi_username
@@ -39,5 +39,12 @@ resource "null_resource" "vcsa_windows_deploy" {
   count = var.windows == true ? 1 : 0
   provisioner "local-exec" {
     command = "${local.binaries_path}/vcsa-cli-installer/win32/vcsa-deploy.exe install --accept-eula --acknowledge-ceip --no-ssl-certificate-verification ${local.binaries_path}/vcsa-${var.deploy_type}.json"
+  }
+}
+
+resource "null_resource" "vcsa_linux_deploy" {
+  count = var.windows == false ? 1 : 0
+  provisioner "local-exec" {
+    command = "${local.binaries_path}/vcsa-cli-installer/lin64/vcsa-deploy install --accept-eula --acknowledge-ceip --no-ssl-certificate-verification ${local.binaries_path}/vcsa-${var.deploy_type}.json"
   }
 }

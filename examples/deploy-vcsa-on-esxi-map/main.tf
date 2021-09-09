@@ -30,5 +30,6 @@ module "deploy_vcenter" {
   vcenter_sso_password  = each.value.vcenter_sso_password
   vcenter_sso_domain    = each.value.vcenter_sso_domain
   vcenter_ceip_status   = each.value.vcenter_ceip_status
+  windows		= each.value.windows
   binaries_path         = each.value.binaries_path
 }

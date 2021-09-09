@@ -1,25 +1,26 @@
 deploy_vcenter:
   vcsa01:
     deploy_type: esxi
-    esxi_hostname: esxi2.bmrf.io
+    esxi_hostname: 192.168.59.128
     esxi_username: root
-    esxi_password: VMware123!
-    vcsa_network: Sector-B-VL21
-    vcsa_datastore: ESXi2-SSD
+    esxi_password: C113@C113!
+    vcsa_network: VM Network
+    vcsa_datastore: datastore2
     disk_mode: true
-    deployment_size: small
-    vcenter_hostname: vc-sb.bmrf.io
+    deployment_size: tiny
+    vcenter_hostname: vcs01.localhost
     ip_family: ipv4
     network_mode: static
-    system_name: vc-sb.bmrf.io
-    vcenter_ip: "172.16.21.10"
+    system_name: vcs01.localhost
+    vcenter_ip: "192.168.59.148"
     vcenter_prefix: "24"
-    vcenter_gateway: "172.16.21.1"
-    vcenter_dns: "172.16.11.2"
-    vcenter_root_password: VMware1!
-    vcenter_ntp_server: time.bmrf.io
+    vcenter_gateway: "192.168.59.1"
+    vcenter_dns: "192.168.59.1"
+    vcenter_root_password: Vmware1!
+    vcenter_ntp_server: ntp.time.nl
     vcenter_ssh_enabled: true
-    vcenter_sso_password: VMware1!
+    vcenter_sso_password: Vmware1!
     vcenter_sso_domain: vsphere.local
-    vcenter_ceip_status: false
-    binaries_path: /binaries/vcsa
+    vcenter_ceip_status: true
+    windows: true
+    binaries_path: C:/Users/dhvan/Documents/Software/VMware
