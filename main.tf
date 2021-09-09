@@ -53,7 +53,6 @@ provider "vsphere" {
   user           = "administrator@vsphere.local"
   password       = "{$var.vcenter_sso_password}"
   vsphere_server = "${var.vcenter_fqdn}"
-  depends_on = ["null_resource.vcsa_windows_deploy"]
 
   # If you have a self-signed cert
   allow_unverified_ssl = true
