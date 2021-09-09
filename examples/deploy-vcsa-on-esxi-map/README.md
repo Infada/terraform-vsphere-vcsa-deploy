@@ -19,7 +19,8 @@ locals {
 }
 
 module "deploy_vcenter" {
-  source                = "kalenarndt/vcsa-deploy/vsphere"
+  source                = "infada/vcsa-deploy/vsphere"
+  version               = "1.1.1"
   for_each              = local.deploy_vcenter
   deploy_type           = each.value.deploy_type
   esxi_hostname         = each.value.esxi_hostname
@@ -43,6 +44,7 @@ module "deploy_vcenter" {
   vcenter_sso_password  = each.value.vcenter_sso_password
   vcenter_sso_domain    = each.value.vcenter_sso_domain
   vcenter_ceip_status   = each.value.vcenter_ceip_status
+  windows               = each.value.windows
   binaries_path         = each.value.binaries_path
 }
 ```
@@ -51,31 +53,32 @@ Ensure that you modify the deploy_vcsa_on_vcenter.yaml or deploy_vcsa_on_esxi.ya
 ```yaml
 deploy_vcenter:
   vcsa01:
-    deploy_type: esxi
-    vc_hostname: vc.bmrf.io
-    vc_username: administrator@vsphere.local
-    vc_password: VMware123!
-    vc_datacenter: Black Mesa
-    vc_cluster: Compute
-    vcsa_network: Sector-B-VL21
-    vcsa_datastore: ESXi2-SSD
-    disk_mode: true
-    deployment_size: small
-    vcenter_hostname: vc-sb.bmrf.io
+    deploy_type: vc
+    vc_hostname: target vcenter name
+    vc_username: target vcenter user (admin)
+    vc_password: password
+    vc_datacenter: target datacenter
+    vc_cluster: target cluster
+    vcsa_network: target network
+    vcsa_datastore: target datastore
+    disk_mode: true (for tiny)
+    deployment_size: choose your deployment size (tiny,small,medium)
+    vcenter_hostname: vcenter appliance name
     ip_family: ipv4
-    network_mode: static
-    system_name: vc-sb.bmrf.io
-    vcenter_ip: "172.16.21.10"
-    vcenter_prefix: "24"
-    vcenter_gateway: "172.16.21.1"
-    vcenter_dns: "172.16.11.2"
-    vcenter_root_password: VMware1!
-    vcenter_ntp_server: time.bmrf.io
-    vcenter_ssh_enabled: true
-    vcenter_sso_password: VMware1!
+    network_mode: static or dhcp
+    system_name: vcenter fqdn
+    vcenter_ip: ip of new vcenter
+    vcenter_prefix: subnet ("24")
+    vcenter_gateway: ip gateway
+    vcenter_dns: ip dns server
+    vcenter_root_password: rootpass of new vcenter
+    vcenter_ntp_server: ntp server
+    vcenter_ssh_enabled: true or false
+    vcenter_sso_password: sso password new vcenter domain
     vcenter_sso_domain: vsphere.local
-    vcenter_ceip_status: false
-    binaries_path: /binaries/vcsa
+    vcenter_ceip_status: true/false
+    windows: choose wheter you deploy from windows or Linux (True for windows, false for Linux)
+    binaries_path: path to the extracted VCSA iso
 
 ```
 
