@@ -48,3 +48,13 @@ resource "null_resource" "vcsa_linux_deploy" {
     command = "${local.binaries_path}/vcsa-cli-installer/lin64/vcsa-deploy install --accept-eula --acknowledge-ceip --no-ssl-certificate-verification ${local.binaries_path}/vcsa-${var.deploy_type}.json"
   }
 }
+
+provider "vsphere" {
+  user           = "administrator@vsphere.local"
+  password       = "{$var.vcenter_sso_password}"
+  vsphere_server = "${var.vcenter_fqdn}"
+  depends_on = ["null_resource.vcsa_windows_deploy"]
+
+  # If you have a self-signed cert
+  allow_unverified_ssl = true
+}
