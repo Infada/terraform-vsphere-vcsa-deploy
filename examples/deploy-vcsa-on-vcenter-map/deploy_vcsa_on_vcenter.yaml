@@ -24,4 +24,5 @@ deploy_vcenter:
     vcenter_sso_password: VMware1!
     vcenter_sso_domain: vsphere.local
     vcenter_ceip_status: false
+    windows: true
     binaries_path: /binaries/vcsa

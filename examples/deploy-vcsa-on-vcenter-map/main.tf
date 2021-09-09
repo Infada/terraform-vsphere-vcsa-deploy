@@ -1,11 +1,12 @@
 locals {
   # Deployment Details
-  infra_deploy   = yamldecode(file("${path.module}/deploy_vcsa_on_vcenter.yaml"))
+  infra_deploy   = yamldecode(file("${path.module}/Template/deploy_vcsa_on_vcenter.yaml"))
   deploy_vcenter = local.infra_deploy.deploy_vcenter
 }
 
 module "deploy_vcenter" {
-  source                = "kalenarndt/vcsa-deploy/vsphere"
+  source                = "infada/vcsa-deploy/vsphere"
+  version		= "1.1.1"
   for_each              = local.deploy_vcenter
   deploy_type           = each.value.deploy_type
   vc_datacenter         = each.value.vc_datacenter
@@ -31,5 +32,6 @@ module "deploy_vcenter" {
   vcenter_sso_password  = each.value.vcenter_sso_password
   vcenter_sso_domain    = each.value.vcenter_sso_domain
   vcenter_ceip_status   = each.value.vcenter_ceip_status
+  windows		= each.value.windows
   binaries_path         = each.value.binaries_path
 }
