@@ -25,14 +25,12 @@ variable "esxi_password" {
   description = "Password for the account on the target host"
   type        = string
   default     = ""
-  sensitive   = "true"
 }
 
 variable "vc_password" {
   description = "Password for the account on the target vCenter that will be used to deploy the appliance"
   type        = string
   default     = ""
-  sensitive   = "true"
 }
 
 variable "vc_datacenter" {
@@ -123,7 +121,6 @@ variable "vcenter_dns" {
 variable "vcenter_root_password" {
   description = "vCenter server root password"
   type        = string
-  sensitive   = "true"
 }
 
 variable "vcenter_ntp_server" {
@@ -140,7 +137,6 @@ variable "vcenter_ssh_enabled" {
 variable "vcenter_sso_password" {
   description = "vCenter server SSO password"
   type        = string
-  sensitive   = "true"
 }
 
 variable "vcenter_sso_domain" {
